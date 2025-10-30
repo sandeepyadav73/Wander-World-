@@ -1,0 +1,167 @@
+/* ----- 1. Global & Smooth Scroll ----- */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    /* Navbar ki height ke barabar padding, taaki content na chhupe */
+    padding-top: 70px;
+}
+
+/* ----- 2. Navbar Styling ----- */
+.navbar {
+    /* Shuru mein transparent */
+    background-color: transparent;
+    transition: background-color 0.4s ease-out, box-shadow 0.4s ease-out;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+/* Navbar jab scroll ho */
+.navbar.scrolled {
+    background-color: #ffffff; /* Solid white */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+/* Jab navbar 'scrolled' class ke saath ho, tab links ka color badlo */
+.navbar.scrolled .navbar-nav .nav-link {
+    color: #333;
+}
+.navbar.scrolled .navbar-nav .nav-link:hover {
+    color: #0d6efd; /* Bootstrap primary color */
+}
+.navbar.scrolled .navbar-brand {
+    color: #0d6efd;
+}
+
+.navbar .nav-link {
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navbar .btn-cta {
+    font-weight: 600;
+    border-radius: 20px;
+    padding: 0.5rem 1.25rem;
+}
+
+/* ----- 3. Hero Section (Parallax) ----- */
+.hero-section {
+    position: relative;
+    /* Full screen height minus navbar height */
+    min-height: calc(100vh - 70px);
+    
+    /* Parallax Image */
+    background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* YEH PARALLAX EFFECT BANATA HAI */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Dark overlay readability ke liye */
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+    position: relative; /* Overlay ke upar */
+    z-index: 2;
+    /* Hero text animation */
+    animation: fadeInDown 1s ease-out;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ----- 4. Destinations Card ----- */
+.destination-card {
+    border-radius: 15px;
+    overflow: hidden; /* Image zoom ko contain karne ke liye */
+    transition: box-shadow 0.3s ease;
+}
+
+.destination-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-container {
+    overflow: hidden; /* Must for image zoom */
+}
+
+.destination-card .card-img-top {
+    transition: transform 0.4s ease;
+}
+
+/* Card hover par image zoom effect */
+.destination-card:hover .card-img-top {
+    transform: scale(1.1);
+}
+
+/* ----- 5. Packages Card ----- */
+.package-card {
+    border-radius: 15px;
+    /* Card lift effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.package-card:hover {
+    transform: translateY(-10px); /* Lift effect */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.package-card .card-img-top {
+    height: 220px;
+    object-fit: cover;
+}
+
+.package-icons i {
+    font-size: 1.3rem;
+    margin-right: 1rem;
+    color: #6c757d; /* Bootstrap text-muted color */
+}
+
+/* ----- 6. Footer ----- */
+footer a {
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+footer a:hover {
+    color: #ffffff !important;
+    text-decoration: underline;
+}
+
+.social-icons a {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+.social-icons a:hover {
+    color: #ffffff !important;
+    transform: scale(1.1);
+}
+
+/* ----- 7. Scroll Reveal Animation ----- */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Yeh class JS add karega */
+.reveal-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
